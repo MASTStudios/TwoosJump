@@ -65,31 +65,8 @@
         android:text="Play Again"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
-    
-    <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/avatar"
-            android:layout_gravity="center_horizontal"/>
-
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/playerName"
-            android:layout_gravity="center_horizontal"
-           />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/playerEmail"
-            android:layout_gravity="center_horizontal"
-            />
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/button2"
@@ -113,39 +90,5 @@
             android:textColor="@color/foreground"
             android:textSize="@dimen/score_text_size" />
     </LinearLayout>
-	
-        <!-- MAIN DISPLAY -->
- 
-    
-    
-    <!-- SIGN-IN BAR -->
-    <LinearLayout android:id="@+id/sign_in_bar" style="@style/SignInOutBar">
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/button_sign_in"
-            style="@style/SignInButton" />
-
-	</LinearLayout>
-    <!-- SIGN-OUT BAR -->
-    <LinearLayout android:id="@+id/sign_out_bar" style="@style/SignInOutBar"
-        android:visibility="gone">
-
-        <TextView style="@style/SignInOutBarBlurb"
-            android:text="You are signed in with Google." />
-
-         <Button style="@style/SignOutButton" android:id="@+id/button_sign_out"
-             android:text="Sign Out"
-             android:onClick="signOut"/>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="Scoreboard"
-        android:onClick="showScoreBoard"/>
 
 </RelativeLayout>
