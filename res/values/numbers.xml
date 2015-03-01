@@ -1,0 +1,6 @@
+<resources>
+
+    <item name="fliptime" format="integer" type="integer">250</item>
+    <item name="vx" format="float" type="integer">1</item>
+
+</resources>

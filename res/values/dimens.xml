@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="x_speed">0.4dp</dimen>
+    <dimen name="jumX">50dp</dimen>
+    <dimen name="score_text_size">50sp</dimen>
+    <dimen name="play_button_size">125sp</dimen>
+    <!-- platform attributes -->
+    <dimen name="sw_platform_strokewidth">5dp</dimen>
+    <dimen name="sw_platform_top_height">15dp</dimen>
+    <dimen name="sw_platform_base_margin">20dp</dimen>
+    <dimen name="platform_min_height">100dp</dimen>
+    <dimen name="platform_max_height">280dp</dimen>
+    <dimen name="platform_min_length">200dp</dimen>
+    <dimen name="platform_max_length">400dp</dimen>
+    <dimen name="platform_min_inc_diff">100dp</dimen>
+    <dimen name="platform_max_inc_diff">250dp</dimen>
+    <dimen name="platform_min_dec_diff">50dp</dimen>
+    <dimen name="platform_max_dec_diff">200dp</dimen>
+    <dimen name="platform_absolute_min_diff">50dp</dimen>
+    <!-- jumper attributes -->
+    <dimen name="jumper_accleration">3dp</dimen>
+    <dimen name="jumper_min_start_velocity">1000dp</dimen>
+    <dimen name="jumper_max_start_velocity">1400dp</dimen>
+    <dimen name="jumper_power_factor">1.5dp</dimen>
+    <dimen name="jumper_radius">15dp</dimen>
+
+</resources>

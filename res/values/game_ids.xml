@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_id">871943908013</string>
+  <string name="achievement_beginner">CgkIrdWgn7AZEAIQAA</string>
+  <string name="achievement_advanced_beginner">CgkIrdWgn7AZEAIQAQ</string>
+  <string name="achievement_addict">CgkIrdWgn7AZEAIQAg</string>
+  <string name="achievement_intermediate">CgkIrdWgn7AZEAIQAw</string>
+  <string name="achievement_pro">CgkIrdWgn7AZEAIQBA</string>
+  <string name="leaderboard_global_leaderboard">CgkIrdWgn7AZEAIQBQ</string>
+</resources>
+

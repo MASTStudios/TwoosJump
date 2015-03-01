@@ -1,0 +1,10 @@
+<resources>
+<color name="A">#8888FF</color>
+<color name="Adark">#444488</color>
+<color name="B">#FFFF88</color>
+<color name="Bdark">#888844</color>
+<color name="C">#88FF88</color>
+<color name="Cdark">#448844</color>
+<color name="background">#333333</color>
+<color name="foreground">#CCCCCC</color>
+</resources>
