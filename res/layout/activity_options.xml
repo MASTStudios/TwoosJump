@@ -65,28 +65,8 @@
         android:text="Play Again"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
-    
-    <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/avatar"
-            android:layout_gravity="center_horizontal"/>
 
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/playerName"
-            android:layout_gravity="center_horizontal"
-           />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/playerEmail"
-            android:layout_gravity="center_horizontal"
-            />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -96,46 +76,53 @@
         android:layout_centerHorizontal="true"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/h1"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/score_layout"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/h1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Score"
+                android:textColor="@color/foreground" />
+
+            <TextView
+                android:id="@+id/data_current"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textColor="@color/foreground"
+                android:textSize="@dimen/score_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/best_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="TextView"
-            android:textColor="@color/foreground" />
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="TextView"
-            android:textColor="@color/foreground"
-            android:textSize="@dimen/score_text_size" />
-    </LinearLayout>
-	
-        <!-- MAIN DISPLAY -->
- 
-    
-    
-    <!-- SIGN-IN BAR -->
-    <LinearLayout android:id="@+id/sign_in_bar" style="@style/SignInOutBar">
+            <TextView
+                android:id="@+id/h2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Best"
+                android:textColor="@color/foreground" />
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/button_sign_in"
-            style="@style/SignInButton" />
-
-	</LinearLayout>
-    <!-- SIGN-OUT BAR -->
-    <LinearLayout android:id="@+id/sign_out_bar" style="@style/SignInOutBar"
-        android:visibility="gone">
-
-        <TextView style="@style/SignInOutBarBlurb"
-            android:text="You are signed in with Google." />
-
-         <Button style="@style/SignOutButton" android:id="@+id/button_sign_out"
-             android:text="Sign Out"
-             android:onClick="signOut"/>
+            <TextView
+                android:id="@+id/data_best"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textColor="@color/foreground"
+                android:textSize="@dimen/score_text_size" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -147,5 +134,61 @@
         android:layout_alignParentLeft="true"
         android:text="Scoreboard"
         android:onClick="showScoreBoard"/>
+
+    <LinearLayout
+        android:id="@+id/sign_out_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/button1"  >
+
+        <Button
+            android:id="@+id/button_sign_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="signOut"
+            android:text="Sign Out" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sign_in_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/button1" >
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/button_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+        </com.google.android.gms.common.SignInButton>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/button1"
+        android:layout_alignLeft="@+id/button1" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/playerName"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/button1"
+        android:layout_toRightOf="@+id/avatar"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/playerEmail"
+        android:layout_above="@+id/button1"
+        android:layout_toRightOf="@+id/avatar"
+        android:layout_below="@+id/playerName"
+        android:layout_gravity="center_horizontal"/>
+    
 
 </RelativeLayout>

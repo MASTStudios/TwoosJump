@@ -6,6 +6,7 @@ import java.net.URL;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -47,57 +49,94 @@ public class Options extends Activity implements ConnectionCallbacks, OnConnecti
 	// Set to false to require the user to click the button in order to sign in.
 	private boolean mAutoStartSignInFlow = true;
 
+	Button play;
+	TextView h1, h2;
+	TextView data_current, data_best;
+	LinearLayout scoreLayout, bestLayout;
+
+	// For remembering the highest score and sign-in preferences
+	SharedPreferences prefs;
+	SharedPreferences.Editor edit;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-		mGoogleApiClient = new GoogleApiClient.Builder(this)
-        .addConnectionCallbacks(this)
-        .addOnConnectionFailedListener(this)
-        .addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN)
-        .addApi(Games.API).addScope(Games.SCOPE_GAMES)
-        .build();
-
+		mGoogleApiClient = new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN).addApi(Games.API).addScope(Games.SCOPE_GAMES).build();
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_options);
 
-		//adding onclicklistner to signin button
+		// adding onclicklistner to signin button
 		findViewById(R.id.button_sign_in).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				System.out.println("Sign in initiated");
 				mSignInClicked = true;
+				edit.putBoolean("signIn", true);
+				edit.commit();
 				mGoogleApiClient.connect();
 			}
 		});
-		
-		//adding onclicklistner to signout button
-				findViewById(R.id.button_sign_out).setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						mSignInClicked = false;
-						Games.signOut(mGoogleApiClient);
-						mGoogleApiClient.disconnect();
-						showSignInBar();
-					}
+
+		// adding onclicklistner to signout button
+		findViewById(R.id.button_sign_out).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				mSignInClicked = false;
+				edit.putBoolean("signIn", false);
+				edit.commit();
+				Games.signOut(mGoogleApiClient);
+				mGoogleApiClient.disconnect();
+				showSignInBar();
+			}
 		});
-		
+
 		// changing according to open or gameover
-		Button play = (Button) findViewById(R.id.play_button);
-		TextView h1 = (TextView) findViewById(R.id.h1);
-		TextView data = (TextView) findViewById(R.id.data);
+		play = (Button) findViewById(R.id.play_button);
+		h1 = (TextView) findViewById(R.id.h1);
+		data_current = (TextView) findViewById(R.id.data_current);
+		data_best =  (TextView) findViewById(R.id.data_best);
+		scoreLayout = (LinearLayout)findViewById(R.id.score_layout);
+		bestLayout = (LinearLayout)findViewById(R.id.best_layout);
+
+		// initialising shared preference
+		prefs = getPreferences(0);
+		edit = prefs.edit();
+
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		int best = prefs.getInt("best", -1);
+		if (prefs.getBoolean("signIn", false)) {
+			mGoogleApiClient.connect();
+		}
 		int score = getIntent().getIntExtra("score", -1);
 		if (getIntent().getIntExtra("score", -1) == -1) {
 			play.setText("Play");
-			h1.setVisibility(View.GONE);
+			scoreLayout.setVisibility(View.GONE);
 		} else {
 			h1.setText("Score");
-			data.setText(score + "");
+			data_current.setText(score + "");
+			if(score>best){
+				edit.putInt("best", score);
+				edit.commit();
+			}
 			if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-				Games.Leaderboards.submitScore(mGoogleApiClient, getResources().getString(R.string.leaderboard_global_leaderboard), score);
+				Games.Leaderboards.submitScore(mGoogleApiClient, getResources().getString(R.string.leaderboard_global_leaderboard),best);
 			}
 		}
-
+		
+		//making best score layout visible
+		best = prefs.getInt("best", -1);
+		if(best==-1){
+			bestLayout.setVisibility(View.GONE);
+		}
+		else{
+			data_best.setText(best +"");
+			bestLayout.setVisibility(View.VISIBLE);
+		}
 	}
 
 	@Override
@@ -146,13 +185,10 @@ public class Options extends Activity implements ConnectionCallbacks, OnConnecti
 		if (mSignInClicked || mAutoStartSignInFlow) {
 			mAutoStartSignInFlow = false;
 			mSignInClicked = false;
-			 mResolvingConnectionFailure = BaseGameUtils
-	                    .resolveConnectionFailure(this, mGoogleApiClient,
-	                            connectionResult, RC_SIGN_IN, "Sign in with error");
+			mResolvingConnectionFailure = BaseGameUtils.resolveConnectionFailure(this, mGoogleApiClient, connectionResult, RC_SIGN_IN, "Sign in with error");
 		}
 		showSignInBar();
 	}
-
 
 	public void showScoreBoard(View view) {
 		if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
