@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="19" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
@@ -18,23 +19,30 @@
         <activity
             android:name=".Game"
             android:label="@string/title_activity_game"
-            android:screenOrientation="portrait">
-                        
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Options"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="com.google.android.gms.games.APP_ID"
-        			android:value="@string/app_id" />
-        <meta-data android:name="com.google.android.gms.version"
-            		android:value="@integer/google_play_services_version"/>
+
+        <meta-data
+            android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/app_id" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ScoreBoard"
+            android:label="@string/title_activity_score_board" >
+        </activity>
     </application>
 
 </manifest>

@@ -134,61 +134,6 @@
         android:layout_alignParentLeft="true"
         android:text="Scoreboard"
         android:onClick="showScoreBoard"/>
-
-    <LinearLayout
-        android:id="@+id/sign_out_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/button1"  >
-
-        <Button
-            android:id="@+id/button_sign_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="signOut"
-            android:text="Sign Out" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/sign_in_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/button1" >
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/button_sign_in"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-        </com.google.android.gms.common.SignInButton>
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/button1"
-        android:layout_alignLeft="@+id/button1" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/playerName"
-        android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/button1"
-        android:layout_toRightOf="@+id/avatar"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/playerEmail"
-        android:layout_above="@+id/button1"
-        android:layout_toRightOf="@+id/avatar"
-        android:layout_below="@+id/playerName"
-        android:layout_gravity="center_horizontal"/>
     
 
 </RelativeLayout>

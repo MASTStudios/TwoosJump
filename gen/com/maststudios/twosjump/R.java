@@ -515,7 +515,7 @@ containing a value of this type.
         public static final int powered_by_google_light=0x7f020032;
     }
     public static final class id {
-        public static final int action_settings=0x7f07002b;
+        public static final int action_settings=0x7f07002a;
         public static final int adjust_height=0x7f070002;
         public static final int adjust_width=0x7f070001;
         public static final int avatar=0x7f070028;
@@ -547,7 +547,6 @@ containing a value of this type.
         public static final int none=0x7f070000;
         public static final int normal=0x7f070003;
         public static final int play_button=0x7f07001b;
-        public static final int playerEmail=0x7f07002a;
         public static final int playerName=0x7f070029;
         public static final int production=0x7f070009;
         public static final int sandbox=0x7f07000a;
@@ -568,6 +567,7 @@ containing a value of this type.
     public static final class layout {
         public static final int activity_game=0x7f030000;
         public static final int activity_options=0x7f030001;
+        public static final int activity_score_board=0x7f030002;
     }
     public static final class menu {
         public static final int game=0x7f0b0000;
@@ -701,6 +701,7 @@ containing a value of this type.
         public static final int store_picture_title=0x7f060000;
         public static final int title_activity_game=0x7f060033;
         public static final int title_activity_options=0x7f060036;
+        public static final int title_activity_score_board=0x7f060037;
         public static final int unknown_error=0x7f06002a;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 

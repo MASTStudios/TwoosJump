@@ -144,7 +144,7 @@ int drawable platform_base_tile_left 0x7f02002f
 int drawable platform_base_tile_right 0x7f020030
 int drawable powered_by_google_dark 0x7f020031
 int drawable powered_by_google_light 0x7f020032
-int id action_settings 0x7f07002b
+int id action_settings 0x7f07002a
 int id adjust_height 0x7f070002
 int id adjust_width 0x7f070001
 int id avatar 0x7f070028
@@ -176,7 +176,6 @@ int id monochrome 0x7f070016
 int id none 0x7f070000
 int id normal 0x7f070003
 int id play_button 0x7f07001b
-int id playerEmail 0x7f07002a
 int id playerName 0x7f070029
 int id production 0x7f070009
 int id sandbox 0x7f07000a
@@ -193,6 +192,7 @@ int integer google_play_services_version 0x7f090000
 int integer vx 0x7f090002
 int layout activity_game 0x7f030000
 int layout activity_options 0x7f030001
+int layout activity_score_board 0x7f030002
 int menu game 0x7f0b0000
 int menu options 0x7f0b0001
 int raw gtm_analytics 0x7f040000
@@ -249,6 +249,7 @@ int string store_picture_message 0x7f060001
 int string store_picture_title 0x7f060000
 int string title_activity_game 0x7f060033
 int string title_activity_options 0x7f060036
+int string title_activity_score_board 0x7f060037
 int string unknown_error 0x7f06002a
 int string wallet_buy_button_place_holder 0x7f060022
 int style AppBaseTheme 0x7f050005
