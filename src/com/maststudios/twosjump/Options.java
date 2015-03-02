@@ -26,6 +26,7 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.Player;
 import com.google.android.gms.plus.Plus;
+import com.google.example.games.basegameutils.BaseGameUtils;
 
 public class Options extends Activity implements ConnectionCallbacks, OnConnectionFailedListener {
 
@@ -49,21 +50,36 @@ public class Options extends Activity implements ConnectionCallbacks, OnConnecti
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-		// Create the Google Api Client with access to Plus and Games
-		mGoogleApiClient = new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN).addApi(Games.API).addScope(Games.SCOPE_GAMES).build();
+		mGoogleApiClient = new GoogleApiClient.Builder(this)
+        .addConnectionCallbacks(this)
+        .addOnConnectionFailedListener(this)
+        .addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN)
+        .addApi(Games.API).addScope(Games.SCOPE_GAMES)
+        .build();
+
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_options);
 
 		//adding onclicklistner to signin button
 		findViewById(R.id.button_sign_in).setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View view) {
 				System.out.println("Sign in initiated");
 				mSignInClicked = true;
 				mGoogleApiClient.connect();
 			}
+		});
+		
+		//adding onclicklistner to signout button
+				findViewById(R.id.button_sign_out).setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						mSignInClicked = false;
+						Games.signOut(mGoogleApiClient);
+						mGoogleApiClient.disconnect();
+						showSignInBar();
+					}
 		});
 		
 		// changing according to open or gameover
@@ -130,17 +146,13 @@ public class Options extends Activity implements ConnectionCallbacks, OnConnecti
 		if (mSignInClicked || mAutoStartSignInFlow) {
 			mAutoStartSignInFlow = false;
 			mSignInClicked = false;
+			 mResolvingConnectionFailure = BaseGameUtils
+	                    .resolveConnectionFailure(this, mGoogleApiClient,
+	                            connectionResult, RC_SIGN_IN, "Sign in with error");
 		}
 		showSignInBar();
 	}
 
-	
-	public void signOut(View view) {
-		mSignInClicked = false;
-		Games.signOut(mGoogleApiClient);
-		mGoogleApiClient.disconnect();
-		showSignInBar();
-	}
 
 	public void showScoreBoard(View view) {
 		if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
