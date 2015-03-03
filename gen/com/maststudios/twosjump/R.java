@@ -382,13 +382,7 @@ containing a value of this type.
         public static final int zOrderOnTop=0x7f010014;
     }
     public static final class color {
-        public static final int A=0x7f080017;
-        public static final int Adark=0x7f080018;
-        public static final int B=0x7f080019;
-        public static final int Bdark=0x7f08001a;
-        public static final int C=0x7f08001b;
-        public static final int Cdark=0x7f08001c;
-        public static final int background=0x7f08001d;
+        public static final int background=0x7f08002b;
         public static final int common_action_bar_splitter=0x7f080009;
         /**  Sign-in Button Colors 
          */
@@ -401,9 +395,29 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f080006;
         public static final int common_signin_btn_light_text_focused=0x7f080007;
         public static final int common_signin_btn_light_text_pressed=0x7f080005;
-        public static final int common_signin_btn_text_dark=0x7f08001f;
-        public static final int common_signin_btn_text_light=0x7f080020;
-        public static final int foreground=0x7f08001e;
+        public static final int common_signin_btn_text_dark=0x7f08002d;
+        public static final int common_signin_btn_text_light=0x7f08002e;
+        public static final int complement_0=0x7f080026;
+        public static final int complement_1=0x7f080027;
+        public static final int complement_2=0x7f080028;
+        public static final int complement_3=0x7f080029;
+        public static final int complement_4=0x7f08002a;
+        public static final int foreground=0x7f08002c;
+        public static final int primary_0=0x7f080017;
+        public static final int primary_1=0x7f080018;
+        public static final int primary_2=0x7f080019;
+        public static final int primary_3=0x7f08001a;
+        public static final int primary_4=0x7f08001b;
+        public static final int secondary_1_0=0x7f08001c;
+        public static final int secondary_1_1=0x7f08001d;
+        public static final int secondary_1_2=0x7f08001e;
+        public static final int secondary_1_3=0x7f08001f;
+        public static final int secondary_1_4=0x7f080020;
+        public static final int secondary_2_0=0x7f080021;
+        public static final int secondary_2_1=0x7f080022;
+        public static final int secondary_2_2=0x7f080023;
+        public static final int secondary_2_3=0x7f080024;
+        public static final int secondary_2_4=0x7f080025;
         public static final int wallet_bright_foreground_disabled_holo_light=0x7f08000f;
         /** 
          Wallet colors to support consistent Wallet fragment holo dark UI in client application
@@ -422,8 +436,8 @@ containing a value of this type.
         public static final int wallet_hint_foreground_holo_light=0x7f080011;
         public static final int wallet_holo_blue_light=0x7f080015;
         public static final int wallet_link_text_light=0x7f080016;
-        public static final int wallet_primary_text_holo_light=0x7f080021;
-        public static final int wallet_secondary_text_holo_dark=0x7f080022;
+        public static final int wallet_primary_text_holo_light=0x7f08002f;
+        public static final int wallet_secondary_text_holo_dark=0x7f080030;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 

@@ -1,10 +1,26 @@
 <resources>
-<color name="A">#8888FF</color>
-<color name="Adark">#444488</color>
-<color name="B">#FFFF88</color>
-<color name="Bdark">#888844</color>
-<color name="C">#88FF88</color>
-<color name="Cdark">#448844</color>
-<color name="background">#333333</color>
-<color name="foreground">#CCCCCC</color>
+
+    <color name="primary_0">#3B2CA9</color>
+    <color name="primary_1">#0D0641</color>
+    <color name="primary_2">#22157B</color>
+    <color name="primary_3">#6154BF</color>
+    <color name="primary_4">#9C92E3</color>
+    <color name="secondary_1_0">#E1214A</color>
+    <color name="secondary_1_1">#570013</color>
+    <color name="secondary_1_2">#A40829</color>
+    <color name="secondary_1_3">#EF5475</color>
+    <color name="secondary_1_4">#F893A9</color>
+    <color name="secondary_2_0">#5ED31F</color>
+    <color name="secondary_2_1">#1C5100</color>
+    <color name="secondary_2_2">#3A9A07</color>
+    <color name="secondary_2_3">#84E450</color>
+    <color name="secondary_2_4">#B2F390</color>
+    <color name="complement_0">#F3C724</color>
+    <color name="complement_1">#5E4A00</color>
+    <color name="complement_2">#B18D08</color>
+    <color name="complement_3">#FFDC5A</color>
+    <color name="complement_4">#FFE997</color>
+    <color name="background">#EEEEEE</color>
+    <color name="foreground">#333333</color>
+
 </resources>

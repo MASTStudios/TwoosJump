@@ -19,10 +19,10 @@ public class Platform {
 			minDiffDec, maxDiffDec, minAbsDiff;
 	private static Bitmap platformLeft, platformRight, platformCenter;
 	public static int colors;
-	protected boolean touched;//used for scoring
+	protected boolean touched;// used for scoring
 
 	// initializing static variables
-	public static void init(Context context, World world,int colors) {
+	public static void init(Context context, World world, int colors) {
 		// setting platform static members
 		Platform.colors = colors;
 		Platform.maxH = context.getResources().getDimension(R.dimen.platform_max_height);
@@ -52,7 +52,7 @@ public class Platform {
 		this.color = color;
 		paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		this.context = context;
-		touched=false;
+		touched = false;
 	}
 
 	public Platform(float start, float lastHeight, Context context) {
@@ -60,8 +60,8 @@ public class Platform {
 		Random random = new Random(System.currentTimeMillis());
 		color = random.nextInt(colors);
 		this.start = start;
-		touched=false;
-		
+		touched = false;
+
 		boolean flag = true;
 		while (flag) {
 			flag = false;
@@ -109,60 +109,16 @@ public class Platform {
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setStrokeWidth(context.getResources().getDimension(R.dimen.sw_platform_strokewidth));
 
-		// drawing base
-		// float tileHeight = platformCenter.getHeight();
-		// float tileWidth = platformCenter.getWidth();
-		//
-		// float drawWidth = length - 2 *
-		// context.getResources().getDimension(R.dimen.sw_platform_base_margin);
-		// float drawHeight = height;
-		//
-		// int tileCols = (int) (drawWidth / tileWidth + 0.5);
-		// int tileRows = (int) (this.height / tileHeight) + 1;
-		// float margin = (length - tileWidth * tileCols) / 2;
-		// Bitmap b;
-		//
-		// for (int i = 0; i < tileRows; i++) {
-		// for (int j = 0; j < tileCols; j++) {
-		// if (j == 0) {
-		// b = platformLeft;
-		// } else if (j == tileCols - 1) {
-		// b = platformRight;
-		// } else {
-		// b = platformCenter;
-		// }
-		// canvas.drawBitmap(b, start + margin + tileHeight * j,
-		// (this.height-tileHeight * i)*my+dy, paint);
-		// }
-		// }
-
-		// paint.setStyle(Style.FILL);
-		// paint.setColor(context.getResources().getColor(R.color.platform_base));
-		// canvas.drawRect(start +
-		// context.getResources().getDimension(R.dimen.sw_platform_base_margin),
-		// height, start + length -
-		// context.getResources().getDimension(R.dimen.sw_platform_base_margin),
-		// dy, paint);
-		//
-		// paint.setStyle(Style.STROKE);
-		// paint.setColor(context.getResources().getColor(R.color.platform_base_border));
-		// canvas.drawRect(start +
-		// context.getResources().getDimension(R.dimen.sw_platform_base_margin),
-		// height, start + length -
-		// context.getResources().getDimension(R.dimen.sw_platform_base_margin),
-		// dy, paint);
-
-		// drawing top
 		// setting color
 		switch (color) {
 		case 0:
-			paint.setColor(context.getResources().getColor(R.color.A));
+			paint.setColor(context.getResources().getColor(R.color.primary_3));
 			break;
 		case 1:
-			paint.setColor(context.getResources().getColor(R.color.B));
+			paint.setColor(context.getResources().getColor(R.color.secondary_1_3));
 			break;
 		case 2:
-			paint.setColor(context.getResources().getColor(R.color.C));
+			paint.setColor(context.getResources().getColor(R.color.secondary_2_3));
 			break;
 		}
 		canvas.drawRect(start, height, start + length, height + context.getResources().getDimension(R.dimen.sw_platform_top_height), paint);

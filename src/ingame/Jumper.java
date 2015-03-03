@@ -7,7 +7,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
 
 import com.maststudios.twosjump.R;
 
@@ -115,7 +120,6 @@ public class Jumper {
 						}
 					}
 
-
 					if (jumper.state == POWERING) {
 						if (y != world.getPlatformHeight()) {
 							jump();
@@ -183,18 +187,26 @@ public class Jumper {
 	}
 
 	public void draw(Canvas canvas, float dx, float dy, float mx, float my) {
+
+		float radius = context.getResources().getDimension(R.dimen.jumper_radius);
+		float x = world.jumX * mx + dx;
+		float y = this.y * my + dy;
+
+		// drawing shadow
+
+		// drawing jumper
 		switch (color) {
 		case 0:
-			paint.setColor(context.getResources().getColor(R.color.A));
+			paint.setColor(context.getResources().getColor(R.color.primary_3));
 			break;
 		case 1:
-			paint.setColor(context.getResources().getColor(R.color.B));
+			paint.setColor(context.getResources().getColor(R.color.secondary_1_3));
 			break;
 		case 2:
-			paint.setColor(context.getResources().getColor(R.color.C));
+			paint.setColor(context.getResources().getColor(R.color.secondary_2_3));
 			break;
 		}
-		canvas.drawCircle(world.jumX, y * my + dy - context.getResources().getDimension(R.dimen.jumper_radius), context.getResources().getDimension(R.dimen.jumper_radius), paint);
-	}
+		canvas.drawCircle(x, y - radius, radius, paint);
 
+	}
 }
