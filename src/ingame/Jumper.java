@@ -28,7 +28,7 @@ public class Jumper {
 	protected boolean rotating, alive;
 	protected World world;
 	private Paint paint;
-	private boolean breakJump;
+	private boolean pressed;
 	private Context context;
 	public int state;
 	private Bitmap[] running, inair;
@@ -44,7 +44,7 @@ public class Jumper {
 		state = INAIR;
 		jumv = 0;
 		powerFactor = context.getResources().getDimension(R.dimen.jumper_power_factor) / 1000;
-		breakJump = false;
+		pressed = false;
 
 		this.world = world;
 		this.balls = balls;
@@ -107,7 +107,6 @@ public class Jumper {
 							y = world.getPlatformHeight();
 							{
 								world.score();
-								breakJump = false;
 								jumper.state = RUNNING;
 								jumper.vy = 0;
 							}
@@ -123,12 +122,23 @@ public class Jumper {
 					if (jumper.state == POWERING) {
 						if (y != world.getPlatformHeight()) {
 							jump();
-						}
-						jumv = context.getResources().getDimension(R.dimen.jumper_min_start_velocity) / 1000 + (System.currentTimeMillis() - powerUpStart) * powerFactor;
-						if (jumv >= context.getResources().getDimension(R.dimen.jumper_max_start_velocity) / 1000) {
-							breakJump = true;
-							jump();
 							flip();
+							jumper.state = INAIR;
+						} else {
+							jumv = context.getResources().getDimension(R.dimen.jumper_min_start_velocity) / 1000 + (System.currentTimeMillis() - powerUpStart) * powerFactor;
+							if (jumv >= context.getResources().getDimension(R.dimen.jumper_max_start_velocity) / 1000) {
+								/*
+								 * Breakjump is when the jumper is powering up
+								 * and it reaches the maximum power. In this
+								 * case the jumper jumps with the power it has
+								 * accumulated. The color is changed as soon as
+								 * it jumps and whenever the user taps while the
+								 * jumper is in air.
+								 */
+								jump();
+								flip();
+								jumper.state = INAIR;
+							}
 						}
 					}
 
@@ -153,20 +163,30 @@ public class Jumper {
 	}
 
 	public void press() {
-		if (state == RUNNING) {
+		if(pressed){
+			return;
+		}
+		pressed=true;
+		switch (state) {
+		case RUNNING:
 			powerUpStart = System.currentTimeMillis();
 			state = POWERING;
+			break;
+		case INAIR:
+			flip();
+			break;
 		}
 	}
 
 	public void release() {
-		if (state == POWERING) {
+		pressed=false;
+		switch (state) {
+		case POWERING:
 			jump();
-		}
-		if (!breakJump) {
 			flip();
+			state = INAIR;
+			break;
 		}
-		breakJump = false;
 	}
 
 	public void jump() {
@@ -176,7 +196,6 @@ public class Jumper {
 		}
 		this.vy = jumv;
 		jumv = 0;
-		state = INAIR;
 	}
 
 	public void flip() {

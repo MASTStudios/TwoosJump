@@ -16,7 +16,7 @@
     <dimen name="platform_min_length">200dp</dimen>
     <dimen name="platform_max_length">400dp</dimen>
     <dimen name="platform_min_inc_diff">100dp</dimen>
-    <dimen name="platform_max_inc_diff">250dp</dimen>
+    <dimen name="platform_max_inc_diff">200dp</dimen>
     <dimen name="platform_min_dec_diff">50dp</dimen>
     <dimen name="platform_max_dec_diff">200dp</dimen>
     <dimen name="platform_absolute_min_diff">50dp</dimen>
